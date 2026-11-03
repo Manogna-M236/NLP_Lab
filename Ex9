@@ -1,0 +1,24 @@
+import nltk
+from nltk import word_tokenize, pos_tag, RegexpParser
+
+sentence = "The boy plays in the garden."
+
+tokens = word_tokenize(sentence)
+tagged_words = pos_tag(tokens)
+
+grammar = r"""
+    NP: {<DT>?<JJ>*<NN.*>+}
+    PP: {<IN><NP>}
+"""
+
+chunk_parser = RegexpParser(grammar)
+chunk_tree = chunk_parser.parse(tagged_words)
+
+print("POS Tagged Sentence:")
+print(tagged_words)
+
+print("\nPhrase-Level Analysis:")
+print(chunk_tree)
+
+print("\nChunk Tree:")
+chunk_tree.pretty_print()

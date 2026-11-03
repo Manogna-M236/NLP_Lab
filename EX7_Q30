@@ -1,0 +1,37 @@
+# Training vocabulary from the tiny corpus
+vocabulary = {
+    "the", "dog", "barks",
+    "a", "cat", "sleeps",
+    "dogs", "bark", "chases"
+}
+
+word = "cats"
+
+print("Q30. Unknown Words and HMM Limitations")
+
+# (a) Why does "cats" break the tagger?
+print('\n(a) Why does the word "cats" break the tagger?')
+
+if word not in vocabulary:
+    print('"cats" is not present in the training vocabulary.')
+    print("Therefore, its emission probability is zero for every tag.")
+    print("P(cats | D) = 0")
+    print("P(cats | N) = 0")
+    print("P(cats | V) = 0")
+    print("Hence, every possible tag sequence gets probability 0.")
+
+# (b) Ways to handle unknown words
+print("\n(b) Two ways to handle unknown words")
+
+print("1. Use an <UNK> token for unknown or rare words.")
+print("2. Use word features such as prefixes, suffixes,")
+print("   capitalization and word shape.")
+
+# (c) Limitations
+print("\n(c) Limitations of an HMM tagger")
+
+print("1. HMM uses limited local context due to the Markov assumption.")
+print("2. HMM handles unknown and unseen words poorly.")
+
+print("\nAlternative model:")
+print("BiLSTM-CRF or a Transformer-based POS tagger.")

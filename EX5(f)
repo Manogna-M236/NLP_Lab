@@ -1,0 +1,30 @@
+import re
+from collections import Counter
+
+corpus = """the quick brown fox jumps over the lazy dog
+the dog barks at the fox
+the quick fox runs away from the dog"""
+
+def tokenize(text):
+    return re.findall(r"[a-z]+", text.lower())
+
+tokens = tokenize(corpus)
+counts = Counter(tokens)
+
+N = len(tokens)
+V = len(counts)
+
+test_sentence = "the quick fox"
+
+def sentence_probability(sentence, k):
+    words = tokenize(sentence)
+    probability = 1.0
+
+    for word in words:
+        prob = (counts[word] + k) / (N + k * V)
+        probability *= prob
+
+    return probability
+
+for k in [0.1, 0.5, 1.0]:
+    print(f"k = {k}: Probability = {sentence_probability(test_sentence, k):.8f}")

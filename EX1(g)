@@ -1,0 +1,7 @@
+subject = ["Manager"]
+verb = ["sanctioned"]
+object = ["the loan"]
+for s in subject:
+for v in verb:
+for o in object:
+print(s,v,o)

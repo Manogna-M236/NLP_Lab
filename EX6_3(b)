@@ -1,0 +1,20 @@
+from nltk import word_tokenize
+from nltk.tag import RegexpTagger
+
+patterns = [
+    (r'.*ing$', 'VBG'),       # Cue 1: gerund/present participle
+    (r'.*ed$', 'VBD'),        # Cue 2: past tense
+    (r'.*ly$', 'RB'),         # Cue 3: adverbs
+    (r'.*s$', 'NNS'),         # Cue 4: plural nouns
+    (r'^(The|the)$', 'DT'),   # Cue 5: determiners
+    (r'^(a|an)$', 'DT'),
+    (r'.*', 'NN')             # Default tag
+]
+
+tagger = RegexpTagger(patterns)
+
+sentence = "The little girl quickly finished her homework before dinner."
+
+tokens = word_tokenize(sentence)
+
+print(tagger.tag(tokens))

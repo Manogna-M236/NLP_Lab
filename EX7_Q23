@@ -1,0 +1,43 @@
+N = 17
+
+N1 = 7
+N2 = 2
+N3 = 2
+N4 = 0
+
+print("Q23. Good-Turing Discounting")
+
+# (a) Compute N1, N2 and N3
+print("\n(a) Compute N1, N2 and N3")
+print(f"N1 = {N1}")
+print(f"N2 = {N2}")
+print(f"N3 = {N3}")
+
+# (b) Probability mass reserved for unseen bigrams
+unseen_mass = N1 / N
+
+print("\n(b) Probability mass reserved for unseen bigrams")
+print(f"N1 / N = {N1}/{N}")
+print(f"       = {unseen_mass:.2f}")
+
+# (c) Adjusted counts
+c_star_1 = (1 + 1) * N2 / N1
+c_star_2 = (2 + 1) * N3 / N2
+
+print("\n(c) Adjusted counts")
+print(f"c*(1) = (1+1) * {N2} / {N1}")
+print(f"      = 4/7")
+print(f"      ≈ {c_star_1:.2f}")
+
+print(f"c*(2) = (2+1) * {N3} / {N2}")
+print(f"      = 6/2")
+print(f"      = {c_star_2:.0f}")
+
+# (d) c*(3)
+print("\n(d) Why c*(3) cannot be computed")
+print(f"c*(3) = (3+1) * {N4} / {N3}")
+print(f"      = 4 * {N4} / {N3}")
+
+print("\nN4 = 0, so the formula gives 0 or is undefined.")
+print("Fix: Smooth the Nc values using Simple Good-Turing regression")
+print("or apply discounting only for small c.")

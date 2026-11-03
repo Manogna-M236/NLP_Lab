@@ -1,0 +1,23 @@
+import nltk
+from nltk import word_tokenize, pos_tag, RegexpParser
+
+sentence = "The young researcher develops an AI model."
+
+tokens = word_tokenize(sentence)
+tagged_words = pos_tag(tokens)
+
+grammar = r"""
+    NP: {<DT>?<JJ>*<NN.*>+}
+"""
+
+chunk_parser = RegexpParser(grammar)
+chunk_tree = chunk_parser.parse(tagged_words)
+
+print("POS Tagged Sequence:")
+print(tagged_words)
+
+print("\nBracketed Noun Phrases:")
+print(chunk_tree)
+
+print("\nChunk Tree:")
+chunk_tree.pretty_print()

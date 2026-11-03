@@ -1,0 +1,27 @@
+# (a) Morpheme segmentation and gloss
+print("(a) Morpheme segmentation:")
+
+print("evlerimizden = ev + ler + imiz + den")
+print("ev   -> house")
+print("ler  -> plural")
+print("imiz -> our")
+print("den  -> from")
+
+print("Meaning: from our houses")
+
+
+# (b) Vocabulary explosion
+print("\n(b) Why vocabulary becomes large:")
+
+print("Turkish is an agglutinative language.")
+print("Many grammatical morphemes can be attached to a single word.")
+print("This creates many different word forms from one root.")
+print("Therefore, the word-level vocabulary becomes much larger than English.")
+
+
+# (c) Alternative
+print("\n(c) Subword or morphology-aware alternative:")
+
+print("Use subword tokenization such as BPE or WordPiece.")
+print("Alternatively, use morphological segmentation to split words")
+print("into roots and affixes.")

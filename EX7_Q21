@@ -1,0 +1,34 @@
+# Vocabulary size
+V = 8
+
+# Counts
+C_start = 4
+C_You = 1
+C_study = 1
+C_NLP = 3
+C_start_You = 1
+C_You_study = 0
+C_study_NLP = 1
+C_NLP_end = 3
+
+# Laplace smoothing
+P_You_start = (C_start_You + 1) / (C_start + V)
+P_study_You = (C_You_study + 1) / (C_You + V)
+P_NLP_study = (C_study_NLP + 1) / (C_study + V)
+P_end_NLP = (C_NLP_end + 1) / (C_NLP + V)
+
+# Sentence probability
+P = P_You_start * P_study_You * P_NLP_study * P_end_NLP
+
+print("(a) Replace smoothing of an unseen bigram")
+print("\n(a)")
+
+print(f"P(You | <s>) = (1+1)/(4+8) = {P_You_start:.6f} = 1/6")
+print(f"P(study | You) = (0+1)/(1+8) = {P_study_You:.6f} = 1/9")
+print(f"P(NLP | study) = (1+1)/(1+8) = {P_NLP_study:.6f} = 2/9")
+print(f"P(</s> | NLP) = (3+1)/(3+8) = {P_end_NLP:.6f} = 4/11")
+
+print("\n(b)")
+print("P =", "1/6 × 1/9 × 2/9 × 4/11")
+print(f"P = {P:.6f}")
+print("≈ 1.5 × 10^-3, no longer zero.")

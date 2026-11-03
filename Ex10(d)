@@ -1,0 +1,29 @@
+import nltk
+from nltk import word_tokenize, pos_tag, RegexpParser
+
+sentences = [
+    "The students attend lectures in the classroom.",
+    "The professor explains the lesson in the lecture hall.",
+    "The librarian works in the library.",
+    "The students use computers in the laboratory.",
+    "The college organizes a seminar in the auditorium."
+]
+
+grammar = r"""
+    NP: {<DT>?<JJ>*<NN.*>+}
+    PP: {<IN><NP>}
+    VP: {<VB.*><NP|PP>*}
+"""
+
+chunk_parser = RegexpParser(grammar)
+
+for i, sentence in enumerate(sentences, start=1):
+    tokens = word_tokenize(sentence)
+    tagged_words = pos_tag(tokens)
+    chunk_tree = chunk_parser.parse(tagged_words)
+
+    print("\nActivity Sentence", i)
+    print("Sentence:", sentence)
+    print("POS Tags:", tagged_words)
+    print("Chunk Tree:")
+    print(chunk_tree)

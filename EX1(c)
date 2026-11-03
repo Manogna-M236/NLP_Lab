@@ -1,0 +1,7 @@
+subjects = ["students"]
+verb = ["studies"]
+object = ["NLP"]
+for s in subjects:
+for v in verbs:
+for o in objects:
+print(s,v,o)

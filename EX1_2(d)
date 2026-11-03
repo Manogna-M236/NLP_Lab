@@ -1,0 +1,17 @@
+from collections import Counter 
+# Training data 
+sentences = [ 
+"I like NLP", 
+"I like Python", 
+"I study NLP" 
+] 
+# Word and Bigram Counts 
+words = [] 
+bigrams = [] 
+for sentence in sentences: 
+tokens = sentence.split() 
+words.extend(tokens) 
+for i in range(len(tokens) - 1): 
+bigrams.append((tokens[i], tokens[i + 1]))
+word_count = Counter(words) 
+bigram_count = Counter(bigrams)

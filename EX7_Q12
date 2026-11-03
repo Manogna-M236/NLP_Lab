@@ -1,0 +1,25 @@
+# (a) Classify each pair
+print("(a) Classification:")
+
+print("walk -> walked = Inflection")
+print("teach -> teacher = Derivation")
+print("dog -> dogs = Inflection")
+print("nation -> national = Derivation")
+print("big -> bigger = Inflection")
+print("quick -> quickly = Derivation")
+
+
+# (b) Part of Speech changes
+print("\n(b) Part of Speech changes:")
+
+print("teach (Verb) -> teacher (Noun)")
+print("nation (Noun) -> national (Adjective)")
+print("quick (Adjective) -> quickly (Adverb)")
+
+
+# (c) Pairs to conflate
+print("\n(c) Pairs to conflate:")
+
+print("walk and walked")
+print("dog and dogs")
+print("big and bigger")

@@ -1,0 +1,44 @@
+def morph_analyze(word):
+    # Irregular forms
+    irregular = {
+        "mice": ("mouse", "+PLURAL"),
+        "geese": ("goose", "+PLURAL"),
+        "children": ("child", "+PLURAL"),
+        "went": ("go", "+PAST"),
+        "ate": ("eat", "+PAST"),
+        "ran": ("run", "+PAST")
+    }
+
+    # Check irregular words first
+    if word in irregular:
+        root, tag = irregular[word]
+        return f"{root}{tag}"
+
+    # Regular rules
+    rules = [
+        ("ies", "y", "+PLURAL"),
+        ("es", "", "+PLURAL"),
+        ("s", "", "+PLURAL"),
+        ("ing", "", "+PROG"),
+        ("ed", "", "+PAST")
+    ]
+
+    for suffix, replacement, tag in rules:
+        if word.endswith(suffix):
+            root = word[:-len(suffix)] + replacement
+            return f"{root}{tag}"
+
+    return f"{word}+ROOT"
+
+
+# Test words
+test_words = [
+    "cats", "boxes", "flies", "playing", "jumped", "books",
+    "mice", "geese", "children", "went", "ate", "ran"
+]
+
+print("Word          Analysis")
+print("-------------------------")
+
+for word in test_words:
+    print(f"{word:<12} {morph_analyze(word)}")

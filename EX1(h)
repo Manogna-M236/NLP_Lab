@@ -1,0 +1,28 @@
+grammar = { 
+    "S": ["Login Browse Cart Payment Logout"], 
+    "Login": ["login"], 
+    "Browse": ["browse"], 
+    "Cart": ["add_to_cart"], 
+    "Payment": ["payment"], 
+    "Logout": ["logout"] 
+} 
+ 
+# Function to check whether the input follows the CFG 
+def check_cfg(user_input): 
+    valid_sequence = ["login", "browse", "add_to_cart", "payment", "logout"] 
+ 
+    if user_input.split() == valid_sequence: 
+        print("Accepted: The input follows the CFG.") 
+    else: 
+        print("Rejected: The input does not follow the CFG.") 
+ 
+# Display Grammar 
+print("Context-Free Grammar (CFG)") 
+print("--------------------------") 
+for key, value in grammar.items(): 
+    for rule in value:
+print(f"{key} -> {rule}") 
+# User Input 
+sentence = input("\nEnter the shopping sequence: ") 
+# Check CFG 
+check_cfg(sentence) 

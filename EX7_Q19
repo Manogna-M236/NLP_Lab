@@ -1,0 +1,40 @@
+vocab = 20000
+tokens = 10000000
+
+# (a) Possible bigrams and trigrams
+possible_bigrams = vocab ** 2
+possible_trigrams = vocab ** 3
+
+print("(a) Possible n-grams:")
+
+print("Possible bigrams =", possible_bigrams)
+print("Possible trigrams =", possible_trigrams)
+
+
+# (b) Maximum fraction of possible trigrams
+max_trigrams_in_corpus = tokens - 2
+fraction = max_trigrams_in_corpus / possible_trigrams
+percentage = fraction * 100
+
+print("\n(b) Maximum fraction of possible trigrams:")
+
+print("Maximum distinct trigrams in training data =", max_trigrams_in_corpus)
+print("Fraction =", fraction)
+print("Percentage =", percentage, "%")
+
+
+# (c) Trade-off between bigram and trigram models
+print("\n(c) Trade-off:")
+
+print("Bigram model:")
+print("- Smaller model size")
+print("- Less data sparsity")
+print("- Faster and more memory-efficient")
+print("- Uses only one previous word as context")
+
+print("\nTrigram model:")
+print("- Much larger model size")
+print("- More data sparsity")
+print("- Requires more memory")
+print("- Uses two previous words as context")
+print("- Can capture more contextual information")

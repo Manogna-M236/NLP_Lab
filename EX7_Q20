@@ -1,0 +1,30 @@
+import math
+
+n = 100
+p = 10 ** -4
+
+# (a) Direct probability
+direct_probability = p ** n
+
+print("(a) Why does the program output 0.0?")
+print("P(sentence) = (10^-4)^100")
+print("            = 10^-400")
+print("This is an extremely small number and causes floating-point underflow.")
+print("Therefore, the program prints 0.0")
+
+
+# (b) Log-space computation
+log_probability = n * math.log(p)
+log10_probability = n * math.log10(p)
+
+print("\n(b) Log-space computation:")
+print("ln P(sentence) =", log_probability)
+print("log10 P(sentence) =", log10_probability)
+print("Therefore, P(sentence) ≈ 10^-400.")
+
+
+# (c) Language identification
+print("\n(c) N-gram unit for language identification:")
+print("Character n-grams are more suitable than word n-grams.")
+print("They work well with short messages and Roman-script text.")
+print("They can capture language-specific spelling and character patterns.")

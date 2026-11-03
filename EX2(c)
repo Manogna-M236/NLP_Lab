@@ -1,0 +1,13 @@
+import re 
+# Incorrect regular expression 
+pattern = "[a-z" 
+try: 
+re.compile(pattern) 
+except re.error as e: 
+print("Regex Error:", e) 
+# Correct regular expression 
+correct_pattern = r"[a-z]" 
+text = "Python123" 
+matches = re.findall(correct_pattern, text) 
+print("Correct Pattern:", correct_pattern) 
+print("Matched Lowercase Letters:", matches) 

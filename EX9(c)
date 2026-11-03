@@ -1,0 +1,22 @@
+import nltk
+from nltk import word_tokenize, pos_tag, RegexpParser
+
+sentences = [
+    "a student",
+    "the very intelligent student"
+]
+
+grammar = r"""
+    NP: {<DT>?<RB>*<JJ>*<NN.*>+}
+"""
+
+chunk_parser = RegexpParser(grammar)
+
+for sentence in sentences:
+    tokens = word_tokenize(sentence)
+    tagged_words = pos_tag(tokens)
+    chunk_tree = chunk_parser.parse(tagged_words)
+
+    print("\nSentence:", sentence)
+    print("POS Tags:", tagged_words)
+    print("Chunk Structure:", chunk_tree)

@@ -1,0 +1,32 @@
+import nltk
+from nltk import word_tokenize, pos_tag
+
+nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('averaged_perceptron_tagger_eng')
+
+
+def tag_sentence(sentence):
+    tokens = word_tokenize(sentence)
+    tagged = pos_tag(tokens)
+
+    print("\nSentence:", sentence)
+    print("Word\t\tPOS Tag")
+    print("-" * 30)
+
+    for word, tag in tagged:
+        print(f"{word}\t\t{tag}")
+
+
+sentence1 = "I ran her back under the table and kick the flying ball."
+tag_sentence(sentence1)
+
+sentence2 = "Python is popular open app."
+tag_sentence(sentence2)
+
+sentence3 = "This movie is very good 😎"
+tag_sentence(sentence3)
+
+sentence4 = "The plane flies swiftly across the sky."
+tag_sentence(sentence4)

@@ -1,0 +1,35 @@
+print("Q11. Morpheme Segmentation for a Spell-Checker")
+
+# (a) Segment each word into morphemes
+print("\n(a) Morpheme Segmentation:")
+
+print("unhappiness = un- (prefix) + happy (root) + -ness (derivational suffix)")
+
+print("teachers = teach (root) + -er (derivational suffix) + "
+      "-s (inflectional suffix)")
+
+print("disestablishment = dis- (prefix) + establish (root) + "
+      "-ment (derivational suffix)")
+
+print("internationalization = inter- (prefix) + nation (root) + "
+      "-al (derivational suffix) + -ize (derivational suffix) + "
+      "-ation (derivational suffix)")
+
+
+# (b) Number of morphemes
+print("\n(b) Number of morphemes:")
+
+print("unhappiness -> 3 morphemes")
+print("teachers -> 3 morphemes")
+print("disestablishment -> 3 morphemes")
+print("internationalization -> 5 morphemes")
+
+
+# (c) Inflectional or derivational suffixes
+print("\n(c) Suffix classification:")
+
+print("unhappiness -> -ness = derivational")
+print("teachers -> -er = derivational, -s = inflectional")
+print("disestablishment -> -ment = derivational")
+print("internationalization -> -al = derivational, "
+      "-ize = derivational, -ation = derivational")

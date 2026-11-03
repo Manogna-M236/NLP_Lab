@@ -1,0 +1,42 @@
+C_Francisco = 10
+C_glasses = 3
+
+# Number of distinct contexts in which each word appears
+N1_Francisco = 1       # Mainly after "San"
+N1_glasses = 3         # E.g., reading glasses, sunglasses, etc.
+
+# Total number of distinct bigram types
+N1_total = 20
+
+print('Q25. Why "Francisco" Should Not Follow "reading"')
+
+# (a)
+print("\n(a) Why does plain unigram probability give the wrong answer?")
+print("Plain unigram probability depends only on how frequently a word occurs.")
+print("Francisco is frequent because it usually follows the word 'San'.")
+print("Therefore, its high unigram probability does not mean it is a good")
+print("continuation after 'reading'.")
+
+# (b)
+print("\n(b) Continuation probability in Kneser-Ney")
+P_cont_Francisco = N1_Francisco / N1_total
+P_cont_glasses = N1_glasses / N1_total
+
+print("Kneser-Ney uses:")
+print("P_continuation(w) = N1+(•w) / N1+(••)")
+print("where N1+(•w) is the number of distinct words that occur")
+print("before w, and N1+(••) is the total number of distinct bigram types.")
+
+# (c)
+print("\n(c) Which word will Kneser-Ney prefer?")
+print(f"P_cont(Francisco) = {N1_Francisco}/{N1_total}")
+print(f"P_cont(glasses) = {N1_glasses}/{N1_total}")
+
+print("\nKneser-Ney will prefer 'glasses'.")
+print("'glasses' occurs in more diverse contexts, while 'Francisco'")
+print("occurs mainly after 'San'.")
+
+# (d)
+print("\n(d) Words never seen in training")
+print("Words never seen in training are assigned a small probability")
+print("using an <UNK> token or an open-vocabulary/character-level model.")

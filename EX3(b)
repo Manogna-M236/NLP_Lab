@@ -1,0 +1,19 @@
+dfa = { 
+    'q0': {'a': 'q1'}, 
+    'q1': {'b': 'q1'} 
+} 
+accept = ['q1'] 
+tests = ["a", "ab", "abb", "abbb"] 
+for string in tests: 
+    state = 'q0' 
+    valid = True 
+    for ch in string: 
+        if ch in dfa.get(state, {}): 
+            state = dfa[state][ch] 
+        else: 
+            valid = False 
+            break 
+if valid and state in accept: 
+print(string, "-> Accepted") 
+else: 
+print(string, "-> Rejected")

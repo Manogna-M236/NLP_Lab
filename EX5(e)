@@ -1,0 +1,46 @@
+import random
+from collections import Counter
+
+corpus = """the quick brown fox jumps over the lazy dog
+the dog barks at the fox
+the quick fox runs away from the dog"""
+
+tokens = corpus.lower().split()
+
+# Bigram model
+bigrams = Counter(zip(tokens, tokens[1:]))
+
+# Trigram model
+trigrams = Counter(zip(tokens, tokens[1:], tokens[2:]))
+
+def generate_bigram(start, length=10):
+    words = [start]
+
+    for _ in range(length - 1):
+        choices = [b for a, b in bigrams if a == words[-1]]
+
+        if not choices:
+            break
+
+        words.append(random.choice(choices))
+
+    return " ".join(words)
+
+def generate_trigram(start1, start2, length=10):
+    words = [start1, start2]
+
+    for _ in range(length - 2):
+        choices = [
+            c for a, b, c in trigrams
+            if a == words[-2] and b == words[-1]
+        ]
+
+        if not choices:
+            break
+
+        words.append(random.choice(choices))
+
+    return " ".join(words)
+
+print("Bigram:", generate_bigram("the"))
+print("Trigram:", generate_trigram("the", "quick"))

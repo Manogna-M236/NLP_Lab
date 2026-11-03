@@ -1,0 +1,26 @@
+text = "OMG!! I can't wait for #NLP2026 @IITM :) Tickets cost $4.5k, e-mail me at ravi@example.com"
+
+# (a) At least four wrong/unhelpful tokens
+tokens = text.split()
+
+print("(a) Four wrong/unhelpful tokens:")
+print('1. "OMG!!"')
+print('2. "#NLP2026"')
+print('3. "@IITM"')
+print('4. "$4.5k,"')
+
+# (b) Better token list
+better_tokens = [
+    "OMG", "!", "!", "Ca", "n't", "wait", "for",
+    "#NLP2026", "@IITM", ":)", "Tickets", "cost",
+    "$", "4.5k", ",", "e-mail", "me", "at",
+    "ravi@example.com"
+]
+
+print("\n(b) Better token list:")
+print(better_tokens)
+
+# (c) Penn Treebank convention
+print("\n(c) Penn Treebank convention:")
+print('"Can\\t" should be split as "Ca" + "n\\t".')
+print('Penn Treebank separates contractions and keeps "n\\t" as a separate token.')

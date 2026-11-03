@@ -1,0 +1,9 @@
+import nltk
+from nltk.stem import porterstemmer
+ps = porterStemmer()
+words = ['playing','played','plays','studies','happiness',
+'unhappiness','nationaization','flies','running']
+print(f"{'word':15}{'stem'}"0
+print('-'*25)
+for w in words:
+print(f"{w:15}{ps.stem(w)}")

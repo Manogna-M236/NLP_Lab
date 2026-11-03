@@ -1,0 +1,36 @@
+# (a) Probability of "You study NLP"
+P_You = 1 / 4
+P_study_given_You = 0
+P_NLP_given_study = 1
+P_end_given_NLP = 1
+
+P_sentence = (
+    P_You *
+    P_study_given_You *
+    P_NLP_given_study *
+    P_end_given_NLP
+)
+
+print("(a) P(You study NLP):")
+print("P(You | <s>) = 1/4")
+print("P(study | You) = 0")
+print("P(NLP | study) = 1")
+print("P(</s> | NLP) = 1")
+print("P(You study NLP) = 0")
+print("The probability is zero because the bigram 'You study' "
+      "was never seen in the training corpus.")
+
+
+# (b) Prediction after "love"
+print("\n(b) Probabilities after 'love':")
+print("P(NLP | love) = 2/3")
+print("P(deep | love) = 1/3")
+
+print("\nThe model predicts:")
+print("NLP -> 2/3")
+print("deep -> 1/3")
+
+
+# (c) General technique
+print("\n(c) Technique needed:")
+print("Smoothing")

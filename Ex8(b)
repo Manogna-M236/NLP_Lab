@@ -1,0 +1,31 @@
+import nltk
+from nltk import word_tokenize, pos_tag
+
+sentences = [
+    "The children are playing outside.",
+    "She writes beautiful poems.",
+    "They visited the library yesterday."
+]
+
+for sentence in sentences:
+    print("\nSentence:", sentence)
+
+    tokens = word_tokenize(sentence)
+    tagged_words = pos_tag(tokens)
+
+    print("POS Tags:", tagged_words)
+
+    print("Classifications:")
+    for word, tag in tagged_words:
+        if tag.startswith("NN"):
+            print(word, "- Noun")
+        elif tag.startswith("VB"):
+            print(word, "- Verb")
+        elif tag.startswith("JJ"):
+            print(word, "- Adjective")
+        elif tag.startswith("RB"):
+            print(word, "- Adverb")
+        elif tag.startswith("PRP"):
+            print(word, "- Pronoun")
+        elif tag == "DT":
+            print(word, "- Determiner")

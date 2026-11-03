@@ -1,0 +1,34 @@
+import nltk
+from nltk import word_tokenize, pos_tag, RegexpParser
+
+sentence = "The teacher explains the lesson in the classroom."
+
+tokens = word_tokenize(sentence)
+tagged_words = pos_tag(tokens)
+
+# Grammar 1: NP only
+grammar1 = r"""
+    NP: {<DT>?<JJ>*<NN.*>+}
+"""
+
+# Grammar 2: NP + VP + PP
+grammar2 = r"""
+    NP: {<DT>?<JJ>*<NN.*>+}
+    PP: {<IN><NP>}
+    VP: {<VB.*><NP|PP>*}
+"""
+
+parser1 = RegexpParser(grammar1)
+parser2 = RegexpParser(grammar2)
+
+tree1 = parser1.parse(tagged_words)
+tree2 = parser2.parse(tagged_words)
+
+print("POS Tagged Sentence:")
+print(tagged_words)
+
+print("\nChunk Tree - NP Only:")
+print(tree1)
+
+print("\nChunk Tree - NP + VP + PP:")
+print(tree2)

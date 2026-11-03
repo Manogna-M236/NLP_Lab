@@ -1,0 +1,4 @@
+import re 
+text = "abc@gmail.com test@yahoo.com xyz123@gmail.com" 
+emails = re.findall(r'\w+@gmail\.com', text) 
+print(emails) 

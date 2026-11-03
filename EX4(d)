@@ -1,0 +1,81 @@
+# Lexicon-based FST
+
+# Lexicon (Surface Word -> Root, Tag)
+analysis_lexicon = {
+    # Nouns
+    "cat": ("cat", "NOUN"),
+    "cats": ("cat", "NOUN+PLURAL"),
+    "dog": ("dog", "NOUN"),
+    "dogs": ("dog", "NOUN+PLURAL"),
+    "book": ("book", "NOUN"),
+    "books": ("book", "NOUN+PLURAL"),
+    "child": ("child", "NOUN"),
+    "children": ("child", "NOUN+PLURAL"),
+
+    # Verbs
+    "play": ("play", "VERB"),
+    "playing": ("play", "VERB+PROG"),
+    "played": ("play", "VERB+PAST"),
+    "run": ("run", "VERB"),
+    "running": ("run", "VERB+PROG"),
+    "ran": ("run", "VERB+PAST"),
+    "eat": ("eat", "VERB"),
+    "ate": ("eat", "VERB+PAST"),
+    "walk": ("walk", "VERB"),
+    "walked": ("walk", "VERB+PAST"),
+    "walking": ("walk", "VERB+PROG"),
+    "go": ("go", "VERB"),
+    "went": ("go", "VERB+PAST")
+}
+
+# Reverse Lexicon (Root, Tag -> Surface Word)
+generation_lexicon = {}
+for word, (root, tag) in analysis_lexicon.items():
+    generation_lexicon[(root, tag)] = word
+
+
+# Morphological Analysis
+def analyze(word):
+    if word in analysis_lexicon:
+        root, tag = analysis_lexicon[word]
+        return f"{word} -> Root: {root}, Tag: {tag}"
+    else:
+        return f"{word} -> Not Found"
+
+
+# Morphological Generation
+def generate(root, tag):
+    key = (root, tag)
+    if key in generation_lexicon:
+        return f"{root} + {tag} -> {generation_lexicon[key]}"
+    else:
+        return "Word not found"
+
+
+# ----------- Testing ------------
+
+print("Morphological Analysis")
+print("-" * 35)
+
+analysis_words = [
+    "cats", "children", "books",
+    "played", "running", "went", "ate"
+]
+
+for word in analysis_words:
+    print(analyze(word))
+
+print("\nMorphological Generation")
+print("-" * 35)
+
+generation_tests = [
+    ("cat", "NOUN+PLURAL"),
+    ("child", "NOUN+PLURAL"),
+    ("play", "VERB+PAST"),
+    ("run", "VERB+PROG"),
+    ("go", "VERB+PAST"),
+    ("eat", "VERB+PAST")
+]
+
+for root, tag in generation_tests:
+    print(generate(root, tag))

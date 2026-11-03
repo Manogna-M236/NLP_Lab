@@ -1,0 +1,19 @@
+import nltk
+from nltk import word_tokenize, pos_tag
+
+sentence = "Ravi plays cricket every evening."
+
+tokens = word_tokenize(sentence)
+tagged_words = pos_tag(tokens)
+
+print("POS Tagged Sentence:")
+print(tagged_words)
+
+print("\nNouns, Verbs, and Adverbs:")
+for word, tag in tagged_words:
+    if tag.startswith("NN"):
+        print(word, "- Noun")
+    elif tag.startswith("VB"):
+        print(word, "- Verb")
+    elif tag.startswith("RB"):
+        print(word, "- Adverb")

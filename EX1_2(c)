@@ -1,0 +1,45 @@
+from collections import Counter 
+# Training data 
+sentences = [ 
+"I like NLP", 
+"I like Python", 
+"I study NLP" 
+] 
+# Build bigram counts 
+bigrams = [] 
+words = [] 
+for sentence in sentences: 
+tokens = sentence.split() 
+words.extend(tokens) 
+for i in range(len(tokens) - 1): 
+bigrams.append((tokens[i], tokens[i + 1])) 
+word_count = Counter(words) 
+bigram_count = Counter(bigrams) 
+# Function to calculate bigram probability 
+def sentence_probability(sentence): 
+    tokens = sentence.split() 
+    probability = 1.0 
+ 
+    for i in range(len(tokens) - 1): 
+        bigram = (tokens[i], tokens[i + 1]) 
+ 
+        if bigram in bigram_count: 
+            probability *= bigram_count[bigram] / word_count[bigram[0]] 
+        else: 
+            probability *= 0 
+ 
+    return probability 
+ 
+s1 = "I like NLP" 
+s2 = "Python like I" 
+ 
+p1 = sentence_probability(s1) 
+p2 = sentence_probability(s2) 
+ 
+print("Probability of:", s1, "=", p1) 
+print("Probability of:", s2, "=", p2) 
+ 
+if p1 > p2: 
+    print("\nMore Probable Sentence:", s1) 
+else: 
+    print("\nMore Probable Sentence:", s2) 

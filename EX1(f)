@@ -1,0 +1,6 @@
+subject = ["students","librarian"]
+verb = ["study","collect"]
+object = ["the book"]
+for s,v in zip (subject,verb):
+for o in object:
+print(s,v,o)

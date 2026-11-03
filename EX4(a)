@@ -1,0 +1,25 @@
+from nltk.stem import PorterStemmer, SnowballStemmer
+
+porter = PorterStemmer()
+snowball = SnowballStemmer("english")
+
+words = [
+    "playing",
+    "studies",
+    "happiness",
+    "running",
+    "nationalization",
+    "flies",
+    "better",
+    "relational",
+    "organization",
+    "universities"
+]
+
+print(f"{'Word':<20}{'Porter':<20}{'Snowball':<20}")
+print("-" * 60)
+
+for word in words:
+    porter_stem = porter.stem(word)
+    snowball_stem = snowball.stem(word)
+    print(f"{word:<20}{porter_stem:<20}{snowball_stem:<20}")

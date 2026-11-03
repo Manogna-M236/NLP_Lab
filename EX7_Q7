@@ -1,0 +1,35 @@
+def pluralize(word):
+    if word == "child":
+        return "children"
+    elif word == "knife":
+        return "knives"
+    elif word.endswith("y") and word[-2] not in "aeiou":
+        return word[:-1] + "ies"
+    elif word.endswith(("s", "x", "z", "ch", "sh")):
+        return word + "es"
+    else:
+        return word + "s"
+
+
+def get_rule(word):
+    if word == "child" or word == "knife":
+        return "Lexicon exception"
+    elif word.endswith("y") and word[-2] not in "aeiou":
+        return "Consonant + y -> ies"
+    elif word.endswith(("s", "x", "z", "ch", "sh")):
+        return "+es"
+    else:
+        return "Default +s"
+
+
+words = ["box", "city", "child", "boy", "bus", "knife"]
+
+print("(a) Plural forms:")
+
+for word in words:
+    print(word, "+ PL =", pluralize(word))
+
+print("\n(b) Rules and exceptions:")
+
+for word in words:
+    print(word, "->", get_rule(word))

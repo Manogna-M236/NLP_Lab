@@ -1,0 +1,7 @@
+subject = ["nandu","lahari","sanjana"]
+verb = ["writes","studies"]
+object = ["the notes"]
+for s in subject:
+for v in verb:
+for o in object:
+print(s,v,o)

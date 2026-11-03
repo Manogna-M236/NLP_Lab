@@ -1,0 +1,29 @@
+# Given
+N = 20       # Number of words
+T = 45       # Number of tags
+
+# (a) Brute force
+brute_force = T ** N
+
+# (b) Viterbi
+viterbi_operations = N * (T ** 2)
+
+print("Q29. Why Viterbi Instead of Brute Force?")
+
+print("\n(a) Number of tag sequences by brute force")
+print("= T^N")
+print(f"= {T}^{N}")
+print(f"= {brute_force}")
+print(f"≈ {brute_force:.2e} sequences")
+
+print("\n(b) Viterbi operations")
+print("Complexity = O(N × T²)")
+print(f"= {N} × ({T})²")
+print(f"= {viterbi_operations}")
+print(f"≈ {viterbi_operations:.2e} operations")
+
+print("\n(c) Property that enables dynamic programming")
+print("The Markov property of the HMM.")
+print("The current tag depends only on the previous tag,")
+print("so the best partial path to each tag can be stored")
+print("and reused instead of recomputing all paths.")

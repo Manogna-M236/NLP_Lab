@@ -1,0 +1,67 @@
+# Tagged corpus
+sentences = [
+    [("the", "D"), ("dog", "N"), ("barks", "V")],
+    [("a", "D"), ("cat", "N"), ("sleeps", "V")],
+    [("dogs", "N"), ("bark", "V")],
+    [("the", "D"), ("cat", "N"), ("chases", "V"), ("the", "D"), ("dog", "N")]
+]
+
+# Start -> D
+start_D = 3
+start_N = 1
+
+# D -> N
+D_N = 3
+
+# N -> V
+N_V = 4
+
+# V -> End
+V_end = 4
+
+# Number of sentences
+total_sentences = 4
+
+# Transition probabilities
+P_D_start = start_D / total_sentences
+P_N_D = D_N / 4
+P_V_N = N_V / 5
+P_end_V = V_end / 4
+
+# D tag words: the, a, the, the
+D_the = 3
+D_total = 4
+
+# N tag words: dog, cat, dogs, cat, dog
+N_cat = 2
+N_total = 5
+
+# V tag words: barks, sleeps, bark, chases
+V_barks = 1
+V_total = 4
+
+# Emission probabilities
+P_the_D = D_the / D_total
+P_cat_N = N_cat / N_total
+P_barks_V = V_barks / V_total
+
+print("Q26. Training an HMM Tagger from a Tagged Corpus")
+
+print("\n(a) Transition probabilities")
+print(f"P(<s> | <s>) = {start_D}/{total_sentences} = {P_D_start:.2f}")
+print(f"P(N | D) = {D_N}/4 = {P_N_D:.2f}")
+print(f"P(V | N) = {N_V}/5 = {P_V_N:.2f}")
+print(f"P(</s> | V) = {V_end}/{total_sentences} = {P_end_V:.2f}")
+
+print("\n(b) Emission probabilities")
+print(f"P(the | D) = {D_the}/{D_total} = {P_the_D:.2f}")
+print(f"P(cat | N) = {N_cat}/{N_total} = {P_cat_N:.2f}")
+print(f"P(barks | V) = {V_barks}/{V_total} = {P_barks_V:.2f}")
+
+print("\n(c) Two assumptions that make the HMM tractable")
+
+print("1. Markov assumption:")
+print("   The current tag depends only on the previous tag.")
+
+print("2. Output independence assumption:")
+print("   The observed word depends only on its current tag.")

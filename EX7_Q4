@@ -1,0 +1,22 @@
+k = 120000
+vocabulary = 50000
+
+# (a) Frequency at ranks 2, 10 and 100
+print("(a) Frequency estimates:")
+
+print("Rank 2   ->", k / 2)
+print("Rank 10  ->", k / 10)
+print("Rank 100 ->", k / 100)
+
+# (b) Frequency at rank 50,000
+frequency_50000 = k / vocabulary
+
+print("\n(b) Frequency of the word ranked 50,000th:")
+print("120,000 / 50,000 =", frequency_50000)
+print("So, the word occurs about 2.4 times.")
+
+# (c) Meaning of the long tail
+print("\n(c) Meaning of the long tail:")
+print("Most word types are rare, so estimates for them are unreliable.")
+print("Test data will contain unseen words.")
+print("This motivates smoothing, <UNK> tokens and subword units.")

@@ -1,0 +1,5 @@
+NP = ["John","Mary"]
+verb = "eats"
+for subject in NP:
+for onj in NP:
+print(f"{subject} {verb} {obj}")

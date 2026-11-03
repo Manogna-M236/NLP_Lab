@@ -1,0 +1,15 @@
+# Q9. Tamil Noun Morphology
+
+print("(a) Stem changes:")
+print("Before the plural suffix: the final part of 'maram' changes.")
+print("Before the accusative suffix: the final 'm' changes to 't'.")
+
+print("\n(b) Surface form:")
+print("tree + PL + ACC -> marangalai")
+print("Meaning: trees + accusative -> 'the trees' (as the object)")
+
+print("\n(c) Explanation:")
+print("A rule-based Tamil generator needs paradigm classes because")
+print("different nouns can undergo different stem changes.")
+print("It also needs sandhi rules to handle changes at morpheme boundaries")
+print("when suffixes are attached to stems.")

@@ -1,0 +1,28 @@
+import re
+
+training_text = """the quick brown fox jumps over the lazy dog
+the dog barks at the fox
+the quick fox runs away from the dog"""
+
+test_sentence = "the quick tiger runs fast"
+
+def tokenize(text):
+    return re.findall(r"[a-z]+", text.lower())
+
+# Training vocabulary
+training_tokens = tokenize(training_text)
+vocabulary = set(training_tokens)
+
+# Test sentence
+test_tokens = tokenize(test_sentence)
+
+# Find OOV words
+oov_words = [word for word in test_tokens if word not in vocabulary]
+
+# Calculate OOV rate
+oov_rate = len(oov_words) / len(test_tokens)
+
+print("Test sentence:", test_sentence)
+print("OOV words:", oov_words)
+print("OOV Rate:", oov_rate)
+print("OOV Rate (%):", oov_rate * 100)

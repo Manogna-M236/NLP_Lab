@@ -1,0 +1,31 @@
+# (a) Generate the plural surface form for each input
+
+words = ["box", "city", "child", "boy", "bus", "knife"]
+
+plural_forms = {
+    "box": "boxes",
+    "city": "cities",
+    "child": "children",
+    "boy": "boys",
+    "bus": "buses",
+    "knife": "knives"
+}
+
+print("(a) Plural surface forms:")
+
+for word in words:
+    print(word, "+ PL ->", plural_forms[word])
+
+# (b) General rules and lexicon exceptions
+
+print("\n(b) General rules and lexicon exceptions:")
+
+print("General Rules:")
+print("1. Default +s -> boys")
+print("2. +es after x, s, z, ch, sh -> boxes, buses")
+print("3. Consonant + y -> ies -> cities")
+
+print("\nLexicon Exceptions:")
+print("1. child -> children")
+print("2. knife -> knives")
+print("   Safest stored as an irregular form.")

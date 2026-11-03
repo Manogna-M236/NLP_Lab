@@ -1,0 +1,52 @@
+import nltk
+from nltk.corpus import brown
+from nltk.tag import UnigramTagger
+from nltk.tag import brill, brill_trainer
+
+nltk.download('brown')
+
+# Load tagged sentences from the Brown corpus
+tagged_sentences = brown.tagged_sents(categories='news')
+
+# Split into training and testing data (90% / 10%)
+size = int(len(tagged_sentences) * 0.9)
+
+train_data = tagged_sentences[:size]
+test_data = tagged_sentences[size:]
+
+# Step 1: Create a baseline Unigram tagger
+baseline_tagger = UnigramTagger(train_data)
+
+# Step 2: Define transformation rule templates
+templates = brill.brill24()
+
+# Step 3: Train the Brill tagger
+trainer = brill_trainer.BrillTaggerTrainer(
+    baseline_tagger,
+    templates,
+    trace=3
+)
+
+brill_tagger = trainer.train(
+    train_data,
+    max_rules=20
+)
+
+# Step 4: Evaluate the tagger
+print(
+    "Baseline Unigram Accuracy:",
+    baseline_tagger.accuracy(test_data) * 100
+)
+
+print(
+    "Brill Tagger Accuracy:",
+    brill_tagger.accuracy(test_data) * 100
+)
+
+# Step 5: Tag a new sentence
+sentence = input("Enter a sentence: ")
+
+tokens = nltk.word_tokenize(sentence)
+
+print("\nTagged Output:")
+print(brill_tagger.tag(tokens))

@@ -1,0 +1,56 @@
+# Transition probabilities
+P_start_D = 0.6
+P_N_D = 0.90
+P_V_N = 0.60
+P_N_N = 0.20
+
+# Emission probabilities
+P_the_D = 0.7
+P_dog_N = 0.3
+P_dog_V = 0.01
+P_barks_N = 0.1
+P_barks_V = 0.2
+
+# (a) Sequence: D N V
+P_DNV = (
+    P_start_D *
+    P_the_D *
+    P_N_D *
+    P_dog_N *
+    P_V_N *
+    P_barks_V
+)
+
+# (b) Sequence: D N N
+P_DNN = (
+    P_start_D *
+    P_the_D *
+    P_N_D *
+    P_dog_N *
+    P_N_N *
+    P_barks_N
+)
+
+# (c) Comparison
+factor = P_DNV / P_DNN
+
+print('Q27. HMM Tagging for "the dog barks"')
+
+print("\n(a) P(words, D N V)")
+print("= P(D|<s>) * P(the|D) * P(N|D)")
+print("  * P(dog|N) * P(V|N) * P(barks|V)")
+print("= 0.6 * 0.7 * 0.9 * 0.3 * 0.6 * 0.2")
+print(f"= {P_DNV:.6f}")
+
+print("\n(b) P(words, D N N)")
+print("= P(D|<s>) * P(the|D) * P(N|D)")
+print("  * P(dog|N) * P(N|N) * P(barks|N)")
+print("= 0.6 * 0.7 * 0.9 * 0.3 * 0.2 * 0.1")
+print(f"= {P_DNN:.6f}")
+
+print("\n(c) Comparison")
+print(f"Factor = {P_DNV:.6f} / {P_DNN:.6f}")
+print(f"       = {factor:.0f}")
+
+print("\nTherefore, D N V is preferred.")
+print("It is 6 times more likely than D N N.")

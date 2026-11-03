@@ -1,0 +1,31 @@
+words = ["running", "ran", "runs", "runner", "runners"]
+
+# (a) Lemmatization
+print("(a) Lemmas:")
+
+print("running -> run")
+print("ran -> run")
+print("runs -> run")
+
+print("runner -> runner")
+print("runners -> runner")
+
+# (b) Porter Stemmer
+print("\n(b) Porter Stemmer output:")
+
+print("running -> run")
+print("runs -> run")
+print("ran -> ran")
+print("runner -> runner")
+print("runners -> runner")
+
+# (c) Stemming vs Lemmatization
+print("\n(c) Comparison:")
+
+print("Aggressive stemming raises recall but can hurt precision")
+print("by merging unrelated words.")
+
+print("Lemmatization is more precise and handles irregular forms")
+print("like 'ran'.")
+
+print("A lemmatizer needs a lexicon and the POS tag of the word.")

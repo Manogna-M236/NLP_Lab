@@ -1,0 +1,30 @@
+import re
+from collections import Counter
+import matplotlib.pyplot as plt
+
+corpus = """the quick brown fox jumps over the lazy dog
+the dog barks at the fox
+the quick fox runs away from the dog"""
+
+def tokenize(text):
+    return re.findall(r"[a-z]+", text.lower())
+
+tokens = tokenize(corpus)
+
+# Count unigram frequencies
+unigram_counts = Counter(tokens)
+
+# Top 10 unigrams
+top10 = unigram_counts.most_common(10)
+
+words = [word for word, count in top10]
+frequencies = [count for word, count in top10]
+
+# Plot bar chart
+plt.bar(words, frequencies)
+plt.xlabel("Words")
+plt.ylabel("Frequency")
+plt.title("Top 10 Unigrams Frequency Distribution")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()

@@ -1,0 +1,11 @@
+# Incorrect DFA 
+dfa = { 
+'q0': {'a': 'q1'}, 
+'q1': {'a': 'q1'}   # Error: should be 'b' 
+} 
+print("Incorrect Transition:") 
+print(dfa) 
+# Correct DFA 
+dfa['q1'] = {'b': 'q1'} 
+print("\nCorrect Transition:") 
+print(dfa)

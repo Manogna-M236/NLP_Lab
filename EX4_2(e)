@@ -1,0 +1,14 @@
+word_pairs = [
+    ("happy", "happiness", "-ness", "Derivational"),
+    ("walk", "walked", "-ed", "Inflectional"),
+    ("national", "nationalize", "-ize", "Derivational"),
+    ("book", "books", "-s", "Inflectional"),
+    ("kind", "unkind", "un-", "Derivational"),
+    ("run", "running", "-ing", "Inflectional")
+]
+
+print(f"{'Base Word':<12} {'Derived/Inflected':<20} {'Affix':<8} {'Type'}")
+print("-" * 60)
+
+for base, word, affix, morph_type in word_pairs:
+    print(f"{base:<12} {word:<20} {affix:<8} {morph_type}")

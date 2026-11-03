@@ -1,0 +1,21 @@
+# Q10. Derivational Word Generator for Brand Names
+
+print("Q10. Derivational Word Generator for Brand Names")
+
+# (a)
+print("(a) unlockable, happiness (y -> i), employment, modernize, "
+      "rewriting (drop silent e).")
+
+# (b)
+print("(b) Suffixes select the category of their base: -ment attaches "
+      "to verbs (employ is a verb), -ness to adjectives, -able to verbs. "
+      "'Emploxiness' attaches -ness to a verb; 'unhappyable' attaches "
+      "-able to an adjective.")
+
+# (c)
+print("(c) It can be [un-[lock-able]] (cannot be locked) or "
+      "[[un-lock]-able] (can be unlocked).")
+
+# (d)
+print("(d) Check the base's POS against the affix's allowed input "
+      "category, then keep only outputs found in a large corpus or lexicon.")

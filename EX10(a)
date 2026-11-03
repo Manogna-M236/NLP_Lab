@@ -1,0 +1,25 @@
+import nltk
+from nltk import word_tokenize, pos_tag, RegexpParser
+
+sentence = "The young scientist is developing a new application."
+
+tokens = word_tokenize(sentence)
+tagged_words = pos_tag(tokens)
+
+grammar = r"""
+    NP: {<DT>?<JJ>*<NN.*>+}
+"""
+
+chunk_parser = RegexpParser(grammar)
+chunk_tree = chunk_parser.parse(tagged_words)
+
+print("POS Tagged Sentence:")
+print(tagged_words)
+
+print("\nChunk Structure:")
+print(chunk_tree)
+
+print("\nRecognized Noun Phrases:")
+for subtree in chunk_tree.subtrees(
+        filter=lambda t: t.label() == "NP"):
+    print(subtree.leaves())

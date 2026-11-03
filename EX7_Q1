@@ -1,0 +1,33 @@
+# Q1. Vocabulary Statistics for a News Startup
+
+text = "The cat sat on the mat. The dog sat on the log."
+
+# (a) Count word tokens (ignore punctuation)
+import string
+
+words = text.translate(str.maketrans('', '', string.punctuation)).split()
+tokens = len(words)
+
+print("(a) Number of word tokens:", tokens)
+
+# (b) Count word types
+
+# Lowercased
+lower_words = [word.lower() for word in words]
+lower_types = set(lower_words)
+
+# Case preserved
+case_types = set(words)
+
+print("(b) Word types (lowercased):", len(lower_types))
+print("    Word types (case preserved):", len(case_types))
+
+# (c) Type-token ratio (TTR)
+ttr = len(lower_types) / tokens
+
+print("(c) TTR:", ttr)
+print("    TTR percentage:", ttr * 100, "%")
+
+# (d) Explanation
+print("(d) TTR is poor for comparing texts of very different lengths because")
+print("    TTR tends to decrease as the text becomes longer.")

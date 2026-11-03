@@ -1,0 +1,37 @@
+# (a) Compute P(A) and P(B)
+
+P_A = (3/4) * (2/3) * (2/3) * 1
+P_B = (3/4) * (2/3) * 1 * 1 * 1
+
+print("(a) Sentence probabilities:")
+print("P(A) = P(I love NLP)")
+print("     = 3/4 × 2/3 × 2/3 × 1")
+print("     =", P_A)
+
+print("\nP(B) = P(I love deep learning)")
+print("     = 3/4 × 2/3 × 1 × 1 × 1")
+print("     =", P_B)
+
+
+# (b) Model preference
+
+print("\n(b) Model preference:")
+if P_A > P_B:
+    print("The model prefers sentence A: I love NLP.")
+else:
+    print("The model prefers sentence B: I love deep learning.")
+
+print("Comparing sentences of different lengths is problematic because")
+print("longer sentences have more probability factors and therefore")
+print("usually receive a smaller probability.")
+
+
+# (c) Perplexity of sentence A
+
+N = 4
+perplexity_A = P_A ** (-1 / N)
+
+print("\n(c) Perplexity of sentence A:")
+print("PP(A) = P(A)^(-1/N)")
+print("      = (1/3)^(-1/4)")
+print("      =", perplexity_A)

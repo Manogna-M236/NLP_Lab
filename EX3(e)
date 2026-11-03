@@ -1,0 +1,25 @@
+import re 
+# Binary divisible by 2 
+binary = "1010" 
+if re.fullmatch(r"[01]*0", binary): 
+print("Binary Divisible by 2 -> Accepted") 
+else: 
+print("Rejected") 
+# Valid Identifier 
+identifier = "student_1" 
+if re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", identifier): 
+print("Valid Identifier -> Accepted") 
+else: 
+print("Rejected") 
+# Password Validation 
+password = "Nandu@123" 
+if re.fullmatch(r"(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}", password): 
+print("Password -> Accepted") 
+else: 
+print("Rejected")
+# Vowel Recognition 
+letter = "a" 
+if re.fullmatch(r"[AEIOUaeiou]", letter): 
+print("Vowel -> Accepted") 
+else: 
+print("Rejected")

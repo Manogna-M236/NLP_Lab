@@ -1,0 +1,63 @@
+from collections import Counter 
+ 
+# Training Data 
+sentences = [ 
+    "I like NLP", 
+    "I like Python", 
+    "I study NLP" 
+] 
+ 
+# ---------------- Grammar-Based Model ---------------- 
+def grammar_check(sentence): 
+    grammar = [ 
+        "I like NLP", 
+        "I like Python", 
+        "I study NLP" 
+    ] 
+ 
+    if sentence in grammar: 
+        return "Accepted" 
+    else: 
+        return "Rejected" 
+ 
+# ---------------- Statistical Model ---------------- 
+words = [] 
+bigrams = []
+for sentence in sentences: 
+    tokens = sentence.split() 
+    words.extend(tokens) 
+ 
+    for i in range(len(tokens) - 1): 
+        bigrams.append((tokens[i], tokens[i + 1])) 
+ 
+word_count = Counter(words) 
+bigram_count = Counter(bigrams) 
+ 
+# Bigram Probability Function 
+def bigram_probability(sentence): 
+    tokens = sentence.split() 
+    probability = 1.0 
+ 
+    for i in range(len(tokens) - 1): 
+        bg = (tokens[i], tokens[i + 1]) 
+ 
+        if bg in bigram_count: 
+            probability *= bigram_count[bg] / word_count[bg[0]] 
+        else: 
+            probability *= 0 
+ 
+    return probability 
+ 
+# ---------------- Test Sentences ---------------- 
+test_sentences = [ 
+    "I like NLP", 
+    "Python like I" 
+] 
+ 
+print("Comparison of Grammar-Based Model and Statistical Model\n") 
+ 
+for sentence in test_sentences: 
+    print("Sentence:", sentence) 
+    print("Grammar-Based Model :", grammar_check(sentence)) 
+    print("Statistical Probability :", bigram_probability(sentence)) 
+    print()

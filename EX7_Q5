@@ -1,0 +1,25 @@
+text = "Kal ka meeting cancel ho gaya, please reschedule it by Friday."
+
+# (a) Token-level language identification
+print("(a) Token labels:")
+
+print("Kal(HI) ka(HI) meeting(EN) cancel(EN) ho(HI) gaya(HI), "
+      "please(EN) reschedule(EN) it(EN) by(EN) Friday(EN).")
+
+# (b) Why standard English word analysis fails
+print("\n(b) Reasons:")
+
+print("(i) Romanised Hindi has no standard spelling (kal / kl) "
+      "and is out-of-vocabulary for English tools.")
+
+print("(ii) Words can be ambiguous across languages and 'kal' alone "
+      "can mean yesterday or tomorrow, so context is needed.")
+
+# (c) Preprocessing pipeline
+print("\n(c) Preprocessing pipeline:")
+
+print("Tokenize")
+print("→ Token-level language identification")
+print("→ Transliterate Hindi tokens to Devanagari and normalise spelling")
+print("→ Analyse each span with a language-specific tool")
+print("  (or a multilingual model)")

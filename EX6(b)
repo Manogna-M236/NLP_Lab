@@ -1,0 +1,36 @@
+# Program 2: Rule-Based POS Tagging using Regular Expressions
+
+import nltk
+from nltk import word_tokenize
+from nltk.tag import RegexpTagger
+
+nltk.download('punkt')
+
+# Hand-written rules (pattern, tag) applied in order
+patterns = [
+    (r'.*ing$', 'VBG'),       # Gerunds -> running
+    (r'.*ed$', 'VBD'),        # Past tense -> jumped
+    (r'.*es$', 'VBZ'),        # 3rd person singular -> goes
+    (r'.*ould$', 'MD'),       # Modals -> would, could
+    (r'.*\$s', 'NN$'),        # Possessive nouns
+    (r'.*s$', 'NNS'),         # Plural nouns
+    (r'[0-9]+(\.[0-9]+)?$', 'CD'),  # Cardinal numbers
+    (r'(The|the|A|a|An|an)$', 'DT'),  # Determiners
+    (r'(in|on|at|of|for|with)$', 'IN'),  # Prepositions
+    (r'.*ly$', 'RB'),         # Adverbs
+    (r'.*', 'NN')             # Default: noun
+]
+
+rule_based_tagger = RegexpTagger(patterns)
+
+sentence = input("Enter a sentence: ")
+
+tokens = word_tokenize(sentence)
+
+tagged_output = rule_based_tagger.tag(tokens)
+
+print("\nWord\t\tPOS Tag")
+print("-" * 35)
+
+for word, tag in tagged_output:
+    print(f"{word}\t\t{tag}")

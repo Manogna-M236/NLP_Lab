@@ -1,0 +1,31 @@
+import re 
+# Sample Resume 
+resume = """ 
+Name: Mohana Nandu 
+Email: mohananandu@gmail.com 
+Phone: 9876543210 
+Skills: 
+Python, Java, C++, HTML, CSS, JavaScript, SQL 
+""" 
+# Extract Name 
+name = re.search(r"Name:\s*(.*)", resume) 
+if name: 
+print("Name:", name.group(1)) 
+# Extract Email 
+email = re.search(r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}", resume) 
+if email:
+print("Email:", email.group()) 
+# Extract Phone Number 
+phone = re.search(r"\b\d{10}\b", resume) 
+if phone: 
+print("Phone Number:", phone.group()) 
+# Extract Skills 
+skill_list = [ 
+"Python", "Java", "C++", "HTML", "CSS", 
+"JavaScript", "SQL", "C", "Machine Learning" 
+] 
+found_skills = [] 
+for skill in skill_list: 
+if re.search(r"\b" + re.escape(skill) + r"\b", resume, re.IGNORECASE): 
+found_skills.append(skill) 
+print("Skills:", found_skills)

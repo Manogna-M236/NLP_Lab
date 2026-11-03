@@ -1,0 +1,71 @@
+N = 17
+
+C_I = 3
+C_I_love = 2
+C_You = 1
+C_You_study = 0
+C_love = 2
+C_study = 1
+
+# Lambda values
+lambda_bigram = 0.7
+lambda_unigram = 0.3
+
+# Stupid backoff factor
+alpha = 0.4
+
+# P(love | I)
+P_love_I_bigram = C_I_love / C_I
+P_love_unigram = C_love / N
+
+P_love_I = (
+    lambda_bigram * P_love_I_bigram
+    + lambda_unigram * P_love_unigram
+)
+
+# P(study | You)
+P_study_You_bigram = C_You_study / C_You
+P_study_unigram = C_study / N
+
+P_study_You = (
+    lambda_bigram * P_study_You_bigram
+    + lambda_unigram * P_study_unigram
+)
+
+S_love_I = P_love_I_bigram
+S_study_You = alpha * P_study_unigram
+
+print("Q24. Interpolation and Backoff")
+
+# (a) Linear Interpolation
+print("\n(a) Linear Interpolation")
+
+print("P(love | I)")
+print(f"= 0.7 * (2/3) + 0.3 * (2/17)")
+print(f"≈ {P_love_I:.4f}")
+
+print("\nP(study | You)")
+print(f"= 0.7 * (0/1) + 0.3 * (1/17)")
+print(f"≈ {P_study_You:.4f}")
+
+# (b) Stupid Backoff
+print("\n(b) Stupid Backoff")
+
+print("\nS(study | You)")
+print("Bigram is unseen, so:")
+print("= 0.4 * P(study)")
+print("= 0.4 * (1/17)")
+print(f"≈ {S_study_You:.4f}")
+
+print("\nS(love | I)")
+print("Bigram is seen, so:")
+print("= P(love | I)")
+print("= 2/3")
+print(f"≈ {S_love_I:.4f}")
+
+# (c) Comments
+print("\n(c) Comments")
+print("Lambda should be chosen using a development/held-out dataset")
+print("to obtain the best predictive performance.")
+print("\nStupid backoff is not a true probability because its scores")
+print("do not necessarily sum to 1 across all possible words.")

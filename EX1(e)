@@ -1,0 +1,7 @@
+subject = ["Doctor"]
+verb = ["checks"]
+object = ["the patient"]
+for o in objects:
+for v in verb:
+for s in subject:
+print(s,v,o)

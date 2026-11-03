@@ -1,0 +1,49 @@
+import re
+import nltk
+from collections import Counter
+
+nltk.download('gutenberg')
+
+from nltk.corpus import gutenberg
+
+# Load larger corpus
+text = gutenberg.raw('austen-emma.txt')[:10000]
+
+def tokenize(text):
+    text = text.lower()
+    return re.findall(r"[a-z]+", text)
+
+tokens = tokenize(text)
+
+# ---------- Unigram ----------
+unigram_counts = Counter(tokens)
+N = len(tokens)
+
+print("Total tokens:", N)
+print("\nUNIGRAM PROBABILITIES")
+print(f"{'Word':<15}{'Count':<8}{'Probability':<12}")
+
+for word, count in unigram_counts.most_common(10):
+    print(f"{word:<15}{count:<8}{count/N:.4f}")
+
+# ---------- Bigram ----------
+bigram_counts = Counter(zip(tokens, tokens[1:]))
+
+print("\nBIGRAM PROBABILITIES")
+
+for (w1, w2), count in bigram_counts.most_common(10):
+    prob = count / unigram_counts[w1]
+    print(f"{w1} {w2:<15}{prob:.4f}")
+
+# ---------- Trigram ----------
+trigram_counts = Counter(
+    zip(tokens, tokens[1:], tokens[2:])
+)
+
+bigram_prefix = Counter(zip(tokens, tokens[1:]))
+
+print("\nTRIGRAM PROBABILITIES")
+
+for (w1, w2, w3), count in trigram_counts.most_common(10):
+    prob = count / bigram_prefix[(w1, w2)]
+    print(f"{w1} {w2} {w3:<12}{prob:.4f}")

@@ -1,0 +1,125 @@
+# States
+states = ["D", "N", "V"]
+
+# Start probabilities
+start = {
+    "D": 0.6,
+    "N": 0.3,
+    "V": 0.1
+}
+
+# Transition probabilities
+trans = {
+    "D": {"D": 0.05, "N": 0.90, "V": 0.05},
+    "N": {"D": 0.2, "N": 0.2, "V": 0.6},
+    "V": {"D": 0.6, "N": 0.3, "V": 0.1}
+}
+
+# Emission probabilities
+emit = {
+    "the": {
+        "D": 0.7,
+        "N": 0,
+        "V": 0
+    },
+    "dog": {
+        "D": 0,
+        "N": 0.3,
+        "V": 0.01
+    },
+    "barks": {
+        "D": 0,
+        "N": 0.1,
+        "V": 0.2
+    }
+}
+
+words = ["the", "dog", "barks"]
+
+# Viterbi tables
+delta = {}
+backpointer = {}
+
+delta[0] = {}
+backpointer[0] = {}
+
+for tag in states:
+    delta[0][tag] = start[tag] * emit["the"][tag]
+    backpointer[0][tag] = None
+
+print("(a) δ1 for 'the'")
+for tag in states:
+    print(f"δ1({tag}) = {delta[0][tag]:.6f}")
+
+delta[1] = {}
+backpointer[1] = {}
+
+print("\n(b) δ2 for 'dog'")
+
+for current in states:
+    values = []
+
+    for previous in states:
+        value = (
+            delta[0][previous]
+            * trans[previous][current]
+            * emit["dog"][current]
+        )
+
+        values.append((value, previous))
+
+    best_value, best_previous = max(values)
+
+    delta[1][current] = best_value
+    backpointer[1][current] = best_previous
+
+    print(
+        f"δ2({current}) = {best_value:.6f}, "
+        f"back-pointer = {best_previous}"
+    )
+
+delta[2] = {}
+backpointer[2] = {}
+
+print("\n(c) δ3 for 'barks'")
+
+for current in states:
+    values = []
+
+    for previous in states:
+        value = (
+            delta[1][previous]
+            * trans[previous][current]
+            * emit["barks"][current]
+        )
+
+        values.append((value, previous))
+
+    best_value, best_previous = max(values)
+
+    delta[2][current] = best_value
+    backpointer[2][current] = best_previous
+
+    print(
+        f"δ3({current}) = {best_value:.6f}, "
+        f"back-pointer = {best_previous}"
+    )
+
+# Find best final tag
+best_final_tag = max(delta[2], key=delta[2].get)
+best_probability = delta[2][best_final_tag]
+
+# Backtracking
+best_sequence = [best_final_tag]
+current = best_final_tag
+
+for t in range(2, 0, -1):
+    current = backpointer[t][current]
+    best_sequence.append(current)
+
+best_sequence.reverse()
+
+print("\n(d) Backtracking")
+print("Best final tag:", best_final_tag)
+print("Best tag sequence:", " ".join(best_sequence))
+print(f"Best probability = {best_probability:.6f}")

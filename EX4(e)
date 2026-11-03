@@ -1,0 +1,37 @@
+# English Morphology Examples
+
+inflectional = [
+    ("book", "books", "-s", "Plural"),
+    ("walk", "walked", "-ed", "Past Tense"),
+    ("play", "playing", "-ing", "Progressive"),
+    ("cat", "cats", "-s", "Plural"),
+    ("child", "children", "Irregular", "Plural")
+]
+
+derivational = [
+    ("happy", "happiness", "-ness", "Noun Formation"),
+    ("kind", "unkind", "un-", "Opposite Meaning"),
+    ("nation", "national", "-al", "Adjective Formation"),
+    ("teach", "teacher", "-er", "Agent Noun"),
+    ("beauty", "beautiful", "-ful", "Adjective Formation")
+]
+
+print("-" * 70)
+print("INFLECTIONAL MORPHOLOGY")
+print("-" * 70)
+print(f"{'Base Word':<15}{'Inflected Word':<20}{'Affix':<15}{'Type'}")
+print("-" * 70)
+
+for base, word, affix, morph in inflectional:
+    print(f"{base:<15}{word:<20}{affix:<15}{morph}")
+
+print("\n")
+
+print("-" * 70)
+print("DERIVATIONAL MORPHOLOGY")
+print("-" * 70)
+print(f"{'Base Word':<15}{'Derived Word':<20}{'Affix':<15}{'Type'}")
+print("-" * 70)
+
+for base, word, affix, morph in derivational:
+    print(f"{base:<15}{word:<20}{affix:<15}{morph}")

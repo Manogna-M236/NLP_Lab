@@ -1,0 +1,29 @@
+# (a) Intermediate forms
+print("(a) Intermediate forms:")
+print("cat+N+PL -> cat^s#")
+print("fox+N+PL -> fox^s#")
+
+# (b) E-insertion rule
+print("\n(b) E-insertion rule:")
+print("Ø -> e / {s, x, z, ch, sh} __ ^s#")
+
+# (c) Apply the rule to plural forms
+print("\n(c) Surface forms:")
+
+words = {
+    "fox": "foxes",
+    "cat": "cats",
+    "church": "churches",
+    "wish": "wishes",
+    "boy": "boys"
+}
+
+for word, plural in words.items():
+    print(word, "+ N + PL ->", plural)
+
+# (d) Reverse operation
+print("\n(d) Reverse analysis:")
+print("The same transducer can be run in reverse because")
+print("the lexical and surface mappings are bidirectional.")
+print("Thus, a surface form can be converted back to its")
+print("lexical form by reversing the transitions.")

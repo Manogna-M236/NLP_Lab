@@ -1,0 +1,28 @@
+# (a) Definitions and classification
+print("(a) Definitions and Classification:")
+
+print("Over-stemming: When different words are incorrectly reduced")
+print("to the same stem.")
+
+print("Under-stemming: When words that should be related are not")
+print("reduced to the same stem.")
+
+print("university -> universe = Over-stemming")
+print("alumnus and alumni not matched = Under-stemming")
+
+
+# (b) Effect on precision and recall
+print("\n(b) Effect on Precision and Recall:")
+
+print("Over-stemming -> Precision decreases because irrelevant")
+print("documents may be retrieved.")
+
+print("Under-stemming -> Recall decreases because relevant documents")
+print("may be missed.")
+
+
+# (c) Remedies
+print("\n(c) Remedies:")
+
+print("1. Use a lemmatizer instead of an aggressive stemmer.")
+print("2. Use a domain-specific dictionary or exception list.")

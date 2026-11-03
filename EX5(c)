@@ -1,0 +1,33 @@
+import re
+from collections import Counter
+
+corpus = """the quick brown fox jumps over the lazy dog
+the dog barks at the fox
+the quick fox runs away from the dog"""
+
+def tokenize(sentence):
+    sentence = sentence.lower()
+    return ["<s>"] + re.findall(r"[a-z]+", sentence) + ["</s>"]
+
+sentences = [tokenize(s) for s in corpus.strip().split("\n")]
+
+quadgram_counts = Counter()
+trigram_counts = Counter()
+
+for tokens in sentences:
+    # Count trigrams and quadgrams
+    for i in range(len(tokens) - 3):
+        trigram = tuple(tokens[i:i+3])
+        quadgram = tuple(tokens[i:i+4])
+
+        trigram_counts[trigram] += 1
+        quadgram_counts[quadgram] += 1
+
+# Calculate 4-gram probabilities
+print(f"{'Quadgram':<35}{'Probability':<12}")
+print("-" * 47)
+
+for quadgram, count in quadgram_counts.items():
+    prefix = quadgram[:3]
+    prob = count / trigram_counts[prefix]
+    print(f"{' '.join(quadgram):<35}{prob:.4f}")

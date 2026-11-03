@@ -1,0 +1,20 @@
+# DFA for language ab* 
+dfa = { 
+'q0': {'a': 'q1'}, 
+'q1': {'b': 'q1'} 
+} 
+accept_state = 'q1' 
+string = input("Enter a string: ") 
+state = 'q0' 
+valid = True
+for ch in string: 
+    if ch in dfa.get(state, {}): 
+        state = dfa[state][ch] 
+    else: 
+        valid = False 
+        break 
+ 
+if valid and state == accept_state: 
+    print("Accepted") 
+else: 
+    print("Rejected") 

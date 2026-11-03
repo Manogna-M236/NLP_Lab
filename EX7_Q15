@@ -1,0 +1,26 @@
+print("Q15. Ambiguous Analyses from a Morphological Analyzer")
+
+# (a) Possible analyses
+print("\n(a) Possible analyses:")
+
+print("flies -> fly + N + PL")
+print("flies -> fly + V + 3SG")
+
+print("saw -> saw + N + SG")
+print("saw -> see + V + PAST")
+print("saw -> saw + V + BASE")
+
+print("leaves -> leaf + N + PL")
+print("leaves -> leave + V + 3SG")
+
+
+# (b) Correct analysis in the given sentence
+print("\n(b) Analysis of 'flies' in 'Time flies like an arrow':")
+
+print("flies -> fly + N + PL")
+
+
+# (c) Downstream component
+print("\n(c) Downstream component:")
+
+print("A POS tagger / sequence model uses context to resolve the ambiguity.")

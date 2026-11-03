@@ -1,0 +1,12 @@
+import re 
+text = """ 
+Contact us at support@gmail.com or info@yahoo.com. 
+Call us at 9876543210 or 9123456789. 
+Visit https://www.google.com or http://example.com 
+""" 
+emails = re.findall(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', text) 
+phones = re.findall(r'\b[6-9]\d{9}\b', text) 
+urls = re.findall(r'https?://\S+', text) 
+print("Email IDs:", emails) 
+print("Mobile Numbers:", phones) 
+print("URLs:", urls) 
